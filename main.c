@@ -2,11 +2,21 @@
 
 int		main(int ac, char **av)
 {
-	if (validate_arg(ac) != 0)
+	t_stack_node	*a;
+	t_stack_node	*b;
+	long int		*av_temp;
+	
+
+	a = NULL;
+	b = NULL;
+	av_temp = 0;
+
+	if (ac == 1 || (ac == 2 && !av[1][0]))
 	{
-		ft_printf("dead x(\n");
-		return (0);
+		ft_printf("Error\nProblem with arguments\n");
+		return (1);
 	}
-	ft_printf("Teste\n");
-	return (0);
+	if (ac == 2)
+		av = ft_split(av[1], ' ');
+	init_stack_a(&a, av);
 }

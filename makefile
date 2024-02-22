@@ -4,14 +4,15 @@ NAME = push_swap
 LIBFT = ./libs/Libft/libft.a
 
 
-
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra 
 RM = rm
 RMFLAGS= -f 
 
 SRC = main.c \
-		src/validate_arg.c
+		src/validate_arg.c \
+		src/stack_init.c \
+		src/stack_utils.c
 
 
 OBJ = $(SRC:.c=.o)

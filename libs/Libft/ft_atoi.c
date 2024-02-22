@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:06:37 by bde-souz          #+#    #+#             */
-/*   Updated: 2023/10/19 11:56:39 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:35:44 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+int long	ft_atoi(const char *s)
 {
 	int	i;
-	int	sinal;
-	int	numero;
+	long	sinal;
+	long	numero;
 
 	i = 0;
 	sinal = 1;
@@ -31,17 +31,15 @@ int	ft_atoi(const char *s)
 	{
 		if (((char *)s)[i] == '-')
 			sinal = sinal * -1;
-		if (((char *)s)[i + 1] == '-' || ((char *)s)[i + 1] == '+')
-			return (0);
 		i++;
 	}
 	while (((char *)s)[i] >= '0' && ((char *)s)[i] <= '9')
 	{
 		numero = numero * 10;
-		numero = numero + (((char *)s)[i] - '0');
+		numero = numero + (s[i] - '0');
 		i++;
 	}
-	return (numero = numero * sinal);
+	return (numero * sinal);
 }
 
 /* 

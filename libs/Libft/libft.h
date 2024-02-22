@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:38:04 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/01/31 11:06:30 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:33:42 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
-int					ft_atoi(const char *s);
+int long				ft_atoi(const char *s);
 char				*ft_strdup(const char *s);
 void				*ft_calloc(size_t n, size_t size);
 void				ft_putchar_fd(char c, int fd);
