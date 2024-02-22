@@ -4,7 +4,7 @@ NAME = push_swap
 LIBFT = ./libs/Libft/libft.a
 
 
-CC = gcc
+CC = gcc -g
 CCFLAGS = -Wall -Werror -Wextra 
 RM = rm
 RMFLAGS= -f 
