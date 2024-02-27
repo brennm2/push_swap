@@ -6,62 +6,72 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:54:20 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/22 17:04:11 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:29:19 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int check_duplicates(t_stack_node *a, int n)
+t_stack_node	*find_last_node(t_stack_node *node)
 {
-	if (!a)
+	if (!node)
+		return (NULL);
+	while (node->next)
+		node = node->next;
+	return (node);
+}
+
+int	stack_len (t_stack_node *node)
+{
+	int	len;
+
+	len = 0;
+	if (!node)
 		return (0);
-	while (a)
+	while(node)
 	{
-		if (a->nbr == n)
-			return (1);
-		a = a->next;
+		len++;
+		node = node->next;
 	}
-	return (0);
+	ft_printf("len: %d\n", len);
+	return (len);
 }
 
-int check_syntax_error(char *av)
+bool	check_stack_sorted (t_stack_node *stack)
 {
-	int i;
-
-	i = 0;
-	if (!(av[i] == '-' || av[i] == '+' || (av[i] >= '0' && av[i] <= '9')))
+	if (!stack)
 		return (1);
-	if ((av[i] == '-' || av[i] == '+') && (!(av[i + 1] >= '0' || av[i + 1] <= '9')))
-		return (1);
-	while (av[++i])
+	while(stack->next)
 	{
-		if (!(av[i] >= '0' && av[i] <= '9'))
-			return (1);
-		i++;
+		if(stack->nbr > stack->next->nbr)
+		{
+			//#TODO RETIRAR PRINTF
+			ft_printf("Não Organizado, organizar!\n");
+			return (false);
+		}
+		stack = stack->next;
 	}
-	return (0);
+	ft_printf("Tudo organizado!\n");
+	return (true);
 }
-// #TODO Finish put_node
-static void	put_node (t_stack_node **stack, int n)
+
+
+t_stack_node	*find_biggest_node(t_stack_node *node)
 {
-	t_stack_node *node;
-	t_stack_node *last_node;
-	
-	if(!stack)
-		return ;
-	node = malloc(sizeof(t_stack_node));
+	long	biggest;
+	t_stack_node	*biggest_node;
+
 	if(!node)
-		return ;
-	node->nbr = n;
-	node->next = NULL;
-	if(!(*stack))
+		return (NULL);
+	biggest = LONG_MIN;
+	while(node)
 	{
-		*stack = node;
-		node->prev = NULL;
+		if (node->nbr > biggest)
+		{
+			biggest = node->nbr;
+			biggest_node = node;
+		}
+		node = node->next;
 	}
-	else
-	{
-		
-	}
+	return (biggest_node);
 }

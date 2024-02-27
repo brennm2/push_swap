@@ -12,7 +12,10 @@ RMFLAGS= -f
 SRC = main.c \
 		src/validate_arg.c \
 		src/stack_init.c \
-		src/stack_utils.c
+		src/stack_erros.c \
+		src/stack_utils.c \
+		src/commands/sort_three.c
+
 
 
 OBJ = $(SRC:.c=.o)

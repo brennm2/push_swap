@@ -6,11 +6,36 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:54:16 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/22 16:05:41 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:26:47 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
+
+static void	put_node(t_stack_node **stack, int n)
+{
+	t_stack_node *node;
+	t_stack_node *last_node;
+	
+	if(!stack)
+		return ;
+	node = malloc(sizeof(t_stack_node));
+	if(!node)
+		return ;
+	node->nbr = n;
+	node->next = NULL;
+	if(!(*stack))
+	{
+		*stack = node;
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = find_last_node(*stack);
+		last_node->next = node;
+		node->prev = last_node;
+	}
+}
 
 void init_stack_a(t_stack_node **a, char **av)
 {
@@ -21,10 +46,7 @@ void init_stack_a(t_stack_node **a, char **av)
 	while (av[i])
 	{
 		if (check_syntax_error(av[i]))
-		{
-			ft_printf("Error\nProblem with syntax!\n");
-			// clean
-		}
+			free_error(a);
 		n = ft_atoi(av[i]);
 		if (n > INT_MAX || n < INT_MIN)
 		{
@@ -36,7 +58,8 @@ void init_stack_a(t_stack_node **a, char **av)
 			ft_printf("Error\nYou have a duplicated number\n");
 			// clean
 		}
-		printf("atoi: %ld\n", n);
+		printf("node: %ld\n", n);
+		put_node(a, (int)n);
 		i++;
 	}
 }
