@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:39:44 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/27 17:16:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:48:50 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	sort_three(t_stack_node **stack)
 
 	biggest_node = find_biggest_node(*stack);
 	if (biggest_node == *stack)
-		ft_printf("ra - put TOP to BOTTOM\n");
+		ra(stack, false);
 	else if ((*stack)->next == biggest_node)
-		ft_printf("rra - put BOTTOM to TOP\n");
+		rra(stack, false);
 	if ((*stack)->nbr > (*stack)->next->nbr)
-		ft_printf("sa - rotate FIRST and SECOND\n");
+		sa(stack, false);
 }

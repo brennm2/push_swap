@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:54:20 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/27 17:29:19 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:12:55 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	stack_len (t_stack_node *node)
 		len++;
 		node = node->next;
 	}
-	ft_printf("len: %d\n", len);
 	return (len);
 }
 
@@ -44,14 +43,9 @@ bool	check_stack_sorted (t_stack_node *stack)
 	while(stack->next)
 	{
 		if(stack->nbr > stack->next->nbr)
-		{
-			//#TODO RETIRAR PRINTF
-			ft_printf("Não Organizado, organizar!\n");
 			return (false);
-		}
 		stack = stack->next;
 	}
-	ft_printf("Tudo organizado!\n");
 	return (true);
 }
 

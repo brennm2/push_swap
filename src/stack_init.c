@@ -6,11 +6,24 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:54:16 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/27 16:26:47 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:15:12 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
+
+t_stack_node	*get_cheapest(t_stack_node *node)
+{
+	if (!node)
+		return (NULL);
+	while (node)
+	{
+		if (node->cheapest == true)
+			return (node);
+		node = node->next;
+	}
+	return (NULL);
+}
 
 static void	put_node(t_stack_node **stack, int n)
 {
@@ -51,14 +64,13 @@ void init_stack_a(t_stack_node **a, char **av)
 		if (n > INT_MAX || n < INT_MIN)
 		{
 			ft_printf("Error\nYour number is too big or too small!\n");
-			// clean
+			free_error(a);
 		}
 		if (check_duplicates(*a, (int)n))
 		{
 			ft_printf("Error\nYou have a duplicated number\n");
-			// clean
+			free_error(a);
 		}
-		printf("node: %ld\n", n);
 		put_node(a, (int)n);
 		i++;
 	}
