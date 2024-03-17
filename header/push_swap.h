@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:11:13 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/01 18:15:37 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:49:53 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ typedef struct s_stack_node
 
 } t_stack_node;
 
+
 //	SRC/STACK_UNIT.C
-void init_stack_a(t_stack_node **a, char **av);
+void init_stack_a(t_stack_node **a, char **av, int ac);
 t_stack_node	*get_cheapest(t_stack_node *node);
+void	set_the_top (t_stack_node **stack, t_stack_node *top_node,
+	char stack_name);
 
 //	SRC/STACK_UTILS.C
 int		stack_len (t_stack_node *node);
@@ -44,6 +47,10 @@ t_stack_node	*find_biggest_node(t_stack_node *node);
 void	compile_stack_a(t_stack_node *a, t_stack_node *b);
 void	find_cheapest(t_stack_node *node);
 void	set_index(t_stack_node *node);
+
+//	SRC/COMPILE_STACK_B.C
+void	compile_stack_b (t_stack_node *a, t_stack_node *b);
+t_stack_node	*find_smallest_node (t_stack_node *node);
 
 //	SRC/STACK_ERROS.C
 int		check_syntax_error(char *av);
@@ -75,5 +82,7 @@ void	pb(t_stack_node **a, t_stack_node **b, bool print);
 
 //	SRC/COMMANDS/ORGANIZE_STACKS.C
 void	organize_stacks (t_stack_node **a, t_stack_node **b);
+
+void free_av(int ac, char **av);
 
 #	endif

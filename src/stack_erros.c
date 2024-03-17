@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:39:47 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/27 13:40:09 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:09:36 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int check_syntax_error(char *av)
 {
 	if (!(*av == '-' || *av == '+' || (*av >= '0' && *av <= '9')))
 		return (1);
-	if ((*av == '-' || *av == '+') && (!(av[1] >= '0' || av[1] <= '9')))
+	if ((*av == '-' || *av == '+') && !(av[1] >= '0' && av[1] <= '9'))
 		return (1);
 	while (*++av)
 	{
@@ -60,6 +60,6 @@ void free_stack(t_stack_node **stack)
 void free_error(t_stack_node **stack)
 {
 	free_stack(stack);
-	ft_printf("Error\nProblem with syntax!!!!!\n");
+	ft_printf("Error\nProblem with syntax\n");
 	exit(1);
 }

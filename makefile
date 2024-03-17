@@ -14,6 +14,7 @@ SRC = main.c \
 		src/stack_erros.c \
 		src/stack_utils.c \
 		src/compile_stack_a.c \
+		src/compile_stack_b.c \
 		src/commands/rotate.c \
 		src/commands/reverse_rotate.c \
 		src/commands/swap.c \

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:18:36 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/28 17:52:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:20:30 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	reverse_rotate(t_stack_node **stack)
 {
-	//#TODO Verificar se isso esta certo
 	t_stack_node *last_node;
 
 	if (!*stack || !(*stack)->next)
