@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:56:56 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/05 20:22:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:07:33 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,23 @@ char	**preparestrings(int argc, char **argv)
 		number_str = ft_jointfree(number_str, " ");
 		i++;
 	}
-	strs = ftt_split(number_str, ' ');
+	strs = ft_split(number_str, ' ');
 	free(number_str);
 	return (strs);
 }
+// int	check_syntax_begin(char *av)
+// {
+// 	int i;
 
+// 	i = 0;
+	
+// 	while (av[i])
+// 	{
+// 		if (!(av[i] >= '0' && av[i] <= '9') || (av[i] == " " && av[i + 1] !))
+// 			return (1);
+
+// 	}
+// }
 
 int main(int ac, char **av)
 {
@@ -154,13 +166,19 @@ int main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
+	if (ac == 1 || (ac == 2 && av[1][0] == '\0') || (av[1][0] == ' ' && av[1][1] == '\0'))
+	{
+		//ft_printf("Error\nProblem with syntax\n");
+		free_error(&a);
+		//return (0);
+	}
 	strs = preparestrings(ac, av);
 	
-	if (ac == 1 || !strs[1])
-	{
-		free_av(ac, strs);
-		free_error(&a);
-	}
+	// if (ac == 1 || !strs[1])
+	// {
+	// 	free_av(ac, strs);
+	// 	free_error(&a);
+	// }
 	init_stack_a(&a, strs, ac);
 	if (!check_stack_sorted(a))
 	{
