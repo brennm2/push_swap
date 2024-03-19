@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:56:56 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/18 16:07:33 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:32:52 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,146 +40,102 @@ static int	string_size(char const *s, char c)
 }
 
 
-static int	word_counter(char const *s, char c)
-{
-	int	i;
-	int	counter;
+// static int	word_counter(char const *s, char c)
+// {
+// 	int	i;
+// 	int	counter;
 
-	i = 0;
-	counter = 0;
-	while (s[i] != '\0')
-	{
-		while (s[i] == c && s[i] != '\0')
-		{
-			i++;
-		}
-		if (s[i] != '\0')
-		{
-			counter++;
-		}
-		while (s[i] != c && s[i] != '\0')
-		{
-			i++;
-		}
-	}
-	return (counter);
-}
-
-char	**ftt_split(char const *s, char c)
-{
-	char	**str_array;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	str_array = malloc(sizeof(char *) * (word_counter(s, c) + 1));
-	if (!str_array)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		while (s[i] == c && s[i] != '\0')
-			i++;
-		if (s[i] != '\0')
-		{
-			str_array[j] = ft_substr(s, i, string_size(s + i, c));
-			j++;
-		}
-		while (s[i] != c && s[i] != '\0')
-			i++;
-	}
-	str_array[j] = 0;
-	return (str_array);
-}
+// 	i = 0;
+// 	counter = 0;
+// 	while (s[i] != '\0')
+// 	{
+// 		while (s[i] == c && s[i] != '\0')
+// 		{
+// 			i++;
+// 		}
+// 		if (s[i] != '\0')
+// 		{
+// 			counter++;
+// 		}
+// 		while (s[i] != c && s[i] != '\0')
+// 		{
+// 			i++;
+// 		}
+// 	}
+// 	return (counter);
+// }
 
 
+// char	*ft_jointfree(char *str, char *buff)
+// {
+// 	char	*tmp;
+
+// 	tmp = ft_strjoin(str, buff);
+// 	free(str);
+// 	return (tmp);
+// }
 
 
-char	*ft_jointfree(char *str, char *buff)
+// char	**preparestrings(int argc, char **argv)
+// {
+// 	int		i;
+// 	char	*number_str;
+// 	char	**strs;
+
+// 	number_str = ft_strdup("");
+// 	i = 1;
+// 	while (i < argc)
+// 	{
+// 		number_str = ft_jointfree(number_str, argv[i]);
+// 		number_str = ft_jointfree(number_str, " ");
+// 		i++;
+// 	}
+// 	strs = ft_split(number_str, ' ');
+// 	free(number_str);
+// 	return (strs);
+// }
+
+char *clean_join(char *temp_string, char *buff)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin(str, buff);
-	free(str);
-	return (tmp);
+	tmp = ft_strjoin(temp_string, buff);
+	free(temp_string);
+	return(tmp);
 }
 
-char	*ftt_strdup(const char *s)
+char	**init_strig(int ac, char **av)
 {
-	char	*s_copy;
-	int		i;
+	int	i;
+	char **string;
+	char *temp_string;
 
-	s_copy = malloc(ft_strlen(s) + 1);
-	i = 0;
-	if (!s_copy)
-	{
-		return (NULL);
-	}
-	while (s[i] != '\0')
-	{
-		s_copy[i] = s[i];
-		i++;
-	}
-	s_copy[i] = '\0';
-	return (s_copy);
-}
-
-char	**preparestrings(int argc, char **argv)
-{
-	int		i;
-	char	*number_str;
-	char	**strs;
-
-	number_str = ft_strdup("");
 	i = 1;
-	while (i < argc)
+	temp_string = ft_strdup("");
+	while(ac > i)
 	{
-		number_str = ft_jointfree(number_str, argv[i]);
-		number_str = ft_jointfree(number_str, " ");
+		temp_string = clean_join(temp_string, av[i]);
+		temp_string = clean_join(temp_string, " ");
 		i++;
 	}
-	strs = ft_split(number_str, ' ');
-	free(number_str);
-	return (strs);
+	string = ft_split(temp_string, ' ');
+	free(temp_string);
+	return(string);
 }
-// int	check_syntax_begin(char *av)
-// {
-// 	int i;
-
-// 	i = 0;
-	
-// 	while (av[i])
-// 	{
-// 		if (!(av[i] >= '0' && av[i] <= '9') || (av[i] == " " && av[i + 1] !))
-// 			return (1);
-
-// 	}
-// }
 
 int main(int ac, char **av)
 {
 	t_stack_node *a;
 	t_stack_node *b;
-	char	**strs;
+	char	**string;
 
 	a = NULL;
 	b = NULL;
-	if (ac == 1 || (ac == 2 && av[1][0] == '\0') || (av[1][0] == ' ' && av[1][1] == '\0'))
-	{
-		//ft_printf("Error\nProblem with syntax\n");
+	if (ac == 1 || (ac == 2 && av[1][0] == '\0') 
+		|| (av[1][0] == ' ' && av[1][1] == '\0'))
 		free_error(&a);
-		//return (0);
-	}
-	strs = preparestrings(ac, av);
-	
-	// if (ac == 1 || !strs[1])
-	// {
-	// 	free_av(ac, strs);
-	// 	free_error(&a);
-	// }
-	init_stack_a(&a, strs, ac);
+	string = init_strig(ac, av);
+	init_stack_a(&a, string, ac);
 	if (!check_stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -190,7 +146,7 @@ int main(int ac, char **av)
 			organize_stacks(&a, &b);
 	}
 	free_stack(&a);
-	free_av(ac, strs);
+	free_av(ac, string);
 
 
 
