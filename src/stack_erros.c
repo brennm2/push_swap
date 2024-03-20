@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:39:47 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/20 12:10:16 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:32:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	free_stack(t_stack_node **stack)
 void	free_error(t_stack_node **stack)
 {
 	free_stack(stack);
-	ft_printf("Error\nProblem with syntax\n");
+	write(2, "Error\n", 7);
+	//ft_printf("Error\n");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:25:04 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/20 15:25:07 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:02:09 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_mediam
-			&& cheapest_node->target_node->above_mediam)
+		&& cheapest_node->target_node->above_mediam)
 		rotate_a_and_b(a, b, cheapest_node);
 	else if (!(cheapest_node->above_mediam)
- 			&& !(cheapest_node->target_node->above_mediam))
+		&& !(cheapest_node->target_node->above_mediam))
 		rev_rotate_a_and_b(a, b, cheapest_node);
 	set_the_top(a, cheapest_node, 'a');
 	set_the_top(b, cheapest_node->target_node, 'b');
 	pb(b, a, false);
 }
-
 
 static void	set_min_to_top(t_stack_node **a)
 {
@@ -78,8 +77,8 @@ void	organize_stacks(t_stack_node **a, t_stack_node **b)
 		pb(b, a, false);
 	while (len_a-- > 3 && !check_stack_sorted(*a))
 	{
-		compile_stack_a(*a , *b);
-		move_a_to_b (a, b);
+		compile_stack_a(*a, *b);
+		move_a_to_b(a, b);
 	}
 	sort_three(a);
 	while (*b)
