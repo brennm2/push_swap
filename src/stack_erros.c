@@ -6,13 +6,13 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:39:47 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/05 17:09:36 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:10:16 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int check_duplicates(t_stack_node *a, int n)
+int	check_duplicates(t_stack_node *a, int n)
 {
 	if (!a)
 		return (0);
@@ -25,7 +25,7 @@ int check_duplicates(t_stack_node *a, int n)
 	return (0);
 }
 
-int check_syntax_error(char *av)
+int	check_syntax_error(char *av)
 {
 	if (!(*av == '-' || *av == '+' || (*av >= '0' && *av <= '9')))
 		return (1);
@@ -39,12 +39,12 @@ int check_syntax_error(char *av)
 	return (0);
 }
 
-void free_stack(t_stack_node **stack)
+void	free_stack(t_stack_node **stack)
 {
-	t_stack_node *next_node;
-	t_stack_node *node;
+	t_stack_node	*next_node;
+	t_stack_node	*node;
 
-	if(!stack)
+	if (!stack)
 		return ;
 	node = *stack;
 	while (node)
@@ -57,7 +57,7 @@ void free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void free_error(t_stack_node **stack)
+void	free_error(t_stack_node **stack)
 {
 	free_stack(stack);
 	ft_printf("Error\nProblem with syntax\n");

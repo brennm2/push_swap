@@ -3,6 +3,8 @@
         "push_swap.h": "c",
         "random": "c",
         "chrono": "c",
-        "variant": "c"
+        "variant": "c",
+        "libft.h": "c",
+        "stdbool.h": "c"
     }
 }

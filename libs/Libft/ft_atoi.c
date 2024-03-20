@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:06:37 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/21 17:35:44 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:14:05 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int long	ft_atoi(const char *s)
 {
-	int	i;
+	int		i;
 	long	sinal;
 	long	numero;
 
