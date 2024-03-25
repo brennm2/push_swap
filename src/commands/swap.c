@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:45:28 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/28 18:03:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:01:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static void	swap(t_stack_node **stack)
 void	sa(t_stack_node **a, bool print)
 {
 	swap(a);
-	if(!print)
+	if (!print)
 		ft_printf("sa\n");
 }
 
 void	sb(t_stack_node **b, bool print)
 {
 	swap(b);
-	if(!print)
+	if (!print)
 		ft_printf("sb\n");
 }
 
@@ -43,6 +43,6 @@ void	ss(t_stack_node **a, t_stack_node **b, bool print)
 {
 	swap(a);
 	swap(b);
-	if(!print)
+	if (!print)
 		ft_printf("ss\n");
 }

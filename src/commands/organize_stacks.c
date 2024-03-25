@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:25:04 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/20 17:02:09 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:10:10 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,28 @@ static void	rev_rotate_a_and_b(t_stack_node **top_a, t_stack_node **top_b,
 	set_index(*top_b);
 }
 
-static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
+static void	move_a_and_b(t_stack_node **a, t_stack_node **b, int flag)
 {
 	t_stack_node	*cheapest_node;
 
-	cheapest_node = get_cheapest(*a);
-	if (cheapest_node->above_mediam
-		&& cheapest_node->target_node->above_mediam)
-		rotate_a_and_b(a, b, cheapest_node);
-	else if (!(cheapest_node->above_mediam)
-		&& !(cheapest_node->target_node->above_mediam))
-		rev_rotate_a_and_b(a, b, cheapest_node);
-	set_the_top(a, cheapest_node, 'a');
-	set_the_top(b, cheapest_node->target_node, 'b');
-	pb(b, a, false);
+	if (flag == 1)
+	{
+		cheapest_node = get_cheapest(*a);
+		if (cheapest_node->above_mediam
+			&& cheapest_node->target_node->above_mediam)
+			rotate_a_and_b(a, b, cheapest_node);
+		else if (!(cheapest_node->above_mediam)
+			&& !(cheapest_node->target_node->above_mediam))
+			rev_rotate_a_and_b(a, b, cheapest_node);
+		set_the_top(a, cheapest_node, 'a');
+		set_the_top(b, cheapest_node->target_node, 'b');
+		pb(b, a, false);
+	}
+	if (flag == 0)
+	{
+		set_the_top (a, (*b)->target_node, 'a');
+		pa(a, b, false);
+	}
 }
 
 static void	set_min_to_top(t_stack_node **a)
@@ -60,12 +68,6 @@ static void	set_min_to_top(t_stack_node **a)
 	}
 }
 
-static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
-{
-	set_the_top (a, (*b)->target_node, 'a');
-	pa(a, b, false);
-}
-
 void	organize_stacks(t_stack_node **a, t_stack_node **b)
 {
 	int		len_a;
@@ -78,13 +80,13 @@ void	organize_stacks(t_stack_node **a, t_stack_node **b)
 	while (len_a-- > 3 && !check_stack_sorted(*a))
 	{
 		compile_stack_a(*a, *b);
-		move_a_to_b(a, b);
+		move_a_and_b(a, b, 1);
 	}
 	sort_three(a);
 	while (*b)
 	{
 		compile_stack_b(*a, *b);
-		move_b_to_a(a, b);
+		move_a_and_b(a, b, 0);
 	}
 	set_index(*a);
 	set_min_to_top(a);

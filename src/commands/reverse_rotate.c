@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:18:36 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/04 19:20:30 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/25 09:59:10 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	reverse_rotate(t_stack_node **stack)
 {
-	t_stack_node *last_node;
+	t_stack_node	*last_node;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -26,24 +26,24 @@ static void	reverse_rotate(t_stack_node **stack)
 	last_node->next->prev = last_node;
 }
 
-void	rra (t_stack_node **a, bool print)
+void	rra(t_stack_node **a, bool print)
 {
 	reverse_rotate(a);
-	if(!print)
+	if (!print)
 		ft_printf("rra\n");
 }
 
-void	rrb (t_stack_node **b, bool print)
+void	rrb(t_stack_node **b, bool print)
 {
 	reverse_rotate(b);
-	if(!print)
+	if (!print)
 		ft_printf("rrb\n");
 }
 
-void	rrr (t_stack_node **a, t_stack_node **b, bool print)
+void	rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if(!print)
+	if (!print)
 		ft_printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:57:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/02/28 16:48:21 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:00:46 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	rotate(t_stack_node **stack)
 void	ra(t_stack_node **a, bool print)
 {
 	rotate(a);
-	if(!print)
+	if (!print)
 		ft_printf("ra\n");
 }
 
 void	rb(t_stack_node **b, bool print)
 {
 	rotate(b);
-	if(!print)
+	if (!print)
 		ft_printf("rb\n");
 }
 
@@ -44,6 +44,6 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	rotate(a);
 	rotate(b);
-	if(!print)
+	if (!print)
 		ft_printf("rr\n");
 }

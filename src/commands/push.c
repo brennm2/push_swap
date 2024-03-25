@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:33:22 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/03/20 12:03:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/03/25 09:57:16 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 
 void	pa(t_stack_node **a, t_stack_node **b, bool print)
 {
-	push(a, b); 
-	if (!print) 
+	push(a, b);
+	if (!print)
 		ft_printf("pa\n");
 }
 

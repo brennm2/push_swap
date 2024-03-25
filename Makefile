@@ -42,4 +42,4 @@ fclean: clean
 	$(RM) $(RMFLAGS) $(NAME) $(OBJ)
 	$(MAKE) fclean -C ./libs/Libft/
 
-re: fclean all bonus
+re: fclean all
